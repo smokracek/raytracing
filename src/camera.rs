@@ -1,12 +1,9 @@
 use crate::{
     color::Color,
-    deg_to_rad,
+    geometry::{deg_to_rad, Interval, Point3, Ray, Vec3},
     hittable::Hittable,
     hittable_list::HittableList,
-    interval::Interval,
-    rand_f64,
-    ray::{Point3, Ray},
-    vec3::Vec3,
+    util::rand_f64,
 };
 
 use rayon::prelude::*;

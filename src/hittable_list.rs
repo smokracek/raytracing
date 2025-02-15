@@ -1,10 +1,9 @@
 use std::sync::Arc;
 
 use crate::color::Color;
+use crate::geometry::{Interval, Ray};
 use crate::hittable::{HitRecord, Hittable};
-use crate::interval::Interval;
 use crate::material::Lambertian;
-use crate::ray::Ray;
 
 pub struct HittableList {
     pub objects: Vec<Box<dyn Hittable>>,

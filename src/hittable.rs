@@ -1,9 +1,7 @@
 use std::sync::Arc;
 
-use crate::interval::Interval;
+use crate::geometry::{Interval, Point3, Ray, Vec3};
 use crate::material::Material;
-use crate::ray::*;
-use crate::vec3::Vec3;
 
 pub struct HitRecord {
     pub p: Point3,

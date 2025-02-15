@@ -1,4 +1,32 @@
-use crate::{rand_f64, rand_f64_range};
+use std::f64::consts::PI;
+
+pub fn deg_to_rad(deg: f64) -> f64 {
+    deg * PI / 180.0
+}
+
+pub type Point3 = Vec3;
+
+// ====================
+// RAY
+// ====================
+
+#[derive(Debug, Clone, Copy)]
+pub struct Ray {
+    pub orig: Point3,
+    pub dir: Vec3,
+}
+
+impl Ray {
+    pub fn at(self, t: f64) -> Point3 {
+        self.orig + (t * self.dir)
+    }
+}
+
+// =======================
+// VEC3
+// =======================
+
+use crate::util::{rand_f64, rand_f64_range};
 use std::ops::{Add, AddAssign, Div, DivAssign, Mul, MulAssign, Neg, Sub};
 
 #[derive(Debug, Clone, Copy)]
@@ -231,3 +259,46 @@ impl MulAssign<f64> for Vec3 {
         self.z *= rhs;
     }
 }
+
+// ==========================
+// INTERVAL
+// ==========================
+#[derive(Debug, Copy, Clone)]
+pub struct Interval {
+    pub min: f64,
+    pub max: f64,
+}
+
+impl Interval {
+    pub fn size(self) -> f64 {
+        self.max - self.min
+    }
+
+    pub fn contains(self, x: f64) -> bool {
+        self.min <= x && x <= self.max
+    }
+
+    pub fn surrounds(self, x: f64) -> bool {
+        self.min < x && x <= self.max
+    }
+
+    pub fn clamp(self, x: f64) -> f64 {
+        if x < self.min {
+            return self.min;
+        }
+        if x > self.max {
+            return self.max;
+        }
+        x
+    }
+}
+
+pub const EMPTY: Interval = Interval {
+    min: f64::INFINITY,
+    max: f64::NEG_INFINITY,
+};
+
+pub const UNIVERSE: Interval = Interval {
+    min: f64::NEG_INFINITY,
+    max: f64::INFINITY,
+};

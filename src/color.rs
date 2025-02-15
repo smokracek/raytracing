@@ -1,4 +1,7 @@
-use crate::{interval::Interval, rand_f64, rand_f64_range, vec3::Vec3};
+use crate::{
+    geometry::{Interval, Vec3},
+    util::{rand_f64, rand_f64_range},
+};
 
 pub type Color = Vec3;
 

@@ -1,4 +1,9 @@
-use crate::{color::Color, hittable::HitRecord, rand_f64, ray::Ray, vec3::Vec3};
+use crate::{
+    color::Color,
+    geometry::{Ray, Vec3},
+    hittable::HitRecord,
+    util::rand_f64,
+};
 
 pub struct ScatterResult {
     pub attenuation: Color,

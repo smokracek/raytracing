@@ -3,12 +3,11 @@ use std::sync::Arc;
 use raytracing::{
     camera::Camera,
     color::Color,
+    geometry::{Point3, Vec3},
     hittable_list::HittableList,
     material::{Dielectric, Lambertian, Material, Metal},
-    rand_f64, rand_f64_range,
-    ray::Point3,
     sphere::Sphere,
-    vec3::Vec3,
+    util::{rand_f64, rand_f64_range},
 };
 
 fn main() -> std::io::Result<()> {

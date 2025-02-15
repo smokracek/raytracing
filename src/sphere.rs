@@ -1,11 +1,9 @@
 use std::sync::Arc;
 
 use crate::{
+    geometry::{Interval, Point3, Ray, Vec3},
     hittable::{HitRecord, Hittable},
-    interval::Interval,
     material::Material,
-    ray::{Point3, Ray},
-    vec3::Vec3,
 };
 
 pub struct Sphere {
